@@ -7,10 +7,13 @@ def main():
     # TODO: Uncomment the code below to pass the first stage
     while True:
         sys.stdout.write("$ ")
-        command = input()
+        statement = input()
+        command = statement.split(" ")[0]
+        if not command:
+            continue
         if command == "exit":
             break
-        elif command and command.split(" ")[0] == "echo":
+        elif command.split(" ")[0] == "echo":
             print(echo(command))
         else:
             print(f"{command}: command not found")
