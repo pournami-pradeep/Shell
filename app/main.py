@@ -13,7 +13,7 @@ def main():
             continue
         if command == "exit":
             break
-        elif command.split(" ")[0] == "echo":
+        elif command == "echo":
             print(echo(command))
         else:
             print(f"{command}: command not found")
