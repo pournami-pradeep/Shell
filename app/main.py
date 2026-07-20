@@ -1,7 +1,7 @@
 import sys
 
 def echo(command):
-    return command.strip()[4:]
+    return command.strip()[4:].strip()
     
 def main():
     # TODO: Uncomment the code below to pass the first stage
