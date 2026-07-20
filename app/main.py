@@ -14,7 +14,7 @@ def main():
         if command == "exit":
             break
         elif command == "echo":
-            print(echo(command))
+            print(echo(statement))
         else:
             print(f"{command}: command not found")
     
