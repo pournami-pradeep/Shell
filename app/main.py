@@ -19,7 +19,7 @@ def type_command(statement):
         if  os.path.exists(file_path):
             if os.access(file_path, os.X_OK):
                 return f"{file_name} is {file_path}"
-            return "pou"
+            return None
     return f"{file_name}: not found"
     
 def main():
