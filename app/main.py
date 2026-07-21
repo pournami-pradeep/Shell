@@ -11,12 +11,13 @@ def type_command(statement):
     command = statement.strip()[4:].strip()
     if command in ["type", "echo", "exit"]:
         return f"{command} is a shell builtin"
+    
     paths = os.environ.get("PATH").split(":")
     file_name = command
     for dir in paths:
         file_path = f"{dir}/{file_name}"
         if  os.path.exists(file_path):
-            if os.access(f"{file_path}", os.X_OK):
+            if os.access(file_path, os.X_OK):
                 return f"{file_name} is {file_path}"
             return None
     return f"{file_name}: not found"
