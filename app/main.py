@@ -16,10 +16,10 @@ def type_command(statement):
     file_name = command
     for dir in paths:
         file_path = f"{dir}/{file_name}"
-        if  os.path.exists(file_path):
+        if os.path.exists(file_path):
             if os.access(file_path, os.X_OK):
                 return f"{file_name} is {file_path}"
-            return None
+            continue
     return f"{file_name}: not found"
     
 def main():
