@@ -1,5 +1,7 @@
 import sys
 
+
+
 def echo(statement):
     return statement.strip()[4:].strip()
 
@@ -10,6 +12,8 @@ def type_command(statement):
     return f"{command}: not found"
     
 def main():
+    print(sys.argv,"------")
+
     # TODO: Uncomment the code below to pass the first stage
     while True:
         sys.stdout.write("$ ")
