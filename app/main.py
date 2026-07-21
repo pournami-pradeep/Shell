@@ -19,7 +19,7 @@ def type_command(statement):
         entries = os.listdir(dir)
         if file_name in entries:
             if os.access(f"{dir}/{file_name}", os.X_OK):
-                return f"{file_name} is {dir}"
+                return f"{file_name} is {dir}/{file_name}"
             return None
     return f"{command}: not found"
     
