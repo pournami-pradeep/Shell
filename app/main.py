@@ -14,14 +14,12 @@ def type_command(statement):
     paths = os.environ.get("PATH").split(":")
     file_name = command
     for dir in paths:
-        if not os.path.exists(dir):
-            continue
-        entries = os.listdir(dir)
-        if file_name in entries:
-            if os.access(f"{dir}/{file_name}", os.X_OK):
-                return f"{file_name} is {dir}/{file_name}"
+        file_path = f"{dir}/{file_name}"
+        if  os.path.exists(file_path):
+            if os.access(f"{file_path}", os.X_OK):
+                return f"{file_name} is {file_path}"
             return None
-    return f"{command}: not found"
+    return f"{file_name}: not found"
     
 def main():
 
