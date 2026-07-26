@@ -19,7 +19,7 @@ def check_exec(command):
 
 def type_command(statement):
     command = statement.strip()[4:].strip()
-    if command in ["type", "echo", "exit"]:
+    if command in ["type", "echo", "exit", "pwd"]:
         return f"{command} is a shell builtin"
     
     paths = os.environ.get("PATH").split(":")
