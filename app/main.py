@@ -21,13 +21,12 @@ def run_exec(statement):
     splitted_statment = statement.split(" ")
     command = splitted_statment[0]
     executable, _ = check_exec(command)
+    if not executable:
+        print(f"{command}: command not found")
+        return
     
-    if executable:
-        
-        result = subprocess.run(statement.split(" "),capture_output=True,text=True)
-        return result
-        
-    return None
+    result = subprocess.run(statement.split(" "),capture_output=True,text=True)
+    print(result.stdout,end='')
 
 
 def type_command(statement):
@@ -47,9 +46,9 @@ def pwd(statement):
     print(os.getcwd())
     return
         
-
+functions = {"echo":echo, "type": type_command, "pwd": pwd}
 def main():
-    functions = {"echo":echo, "type": type_command, "exec": check_exec, "pwd": pwd}
+    
     while True:
         sys.stdout.write("$ ")
         statement = input()
@@ -62,12 +61,9 @@ def main():
         if command in functions:
             functions[command](statement)
             continue
-        result = run_exec(statement)
-      
-        if result:
-            print(result.stdout,end='')
-            continue
-        print(f"{command}: command not found")
+        
+        run_exec(statement)
+            
     
     
 
