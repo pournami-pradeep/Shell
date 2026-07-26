@@ -49,3 +49,10 @@ def type_command(statement):
 def pwd(statement):
     print(os.getcwd())
     return
+
+def cd(statement):
+    path = statement.strip()[2:].strip()
+    if os.path.exists(path):
+        os.chdir(path)
+        return
+    print(f"cd: {path}: No such file or directory")
