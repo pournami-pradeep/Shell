@@ -57,7 +57,9 @@ def main():
         
         exec = check_exec(command)
         if exec:
-            subprocess.run(splitted_statment,capture_output=True)
+            result = subprocess.run(splitted_statment,capture_output=True)
+            print(result.stdout)
+
             break
         
 
