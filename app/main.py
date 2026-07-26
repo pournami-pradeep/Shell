@@ -62,7 +62,7 @@ def main():
             continue
 
         if command == "pwd":
-            print(os.path)
+            print(os.getcwd())
             continue
         
         
