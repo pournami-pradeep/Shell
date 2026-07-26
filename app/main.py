@@ -60,6 +60,10 @@ def main():
             result = subprocess.run(splitted_statment,capture_output=True,text=True)
             print(result.stdout,end='')
             continue
+
+        if command == "pwd":
+            print(os.path)
+            continue
         
         
         print(f"{command}: command not found")
