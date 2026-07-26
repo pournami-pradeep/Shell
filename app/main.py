@@ -4,7 +4,8 @@ import sys
 import subprocess
 
 def echo(statement):
-    return statement.strip()[4:].strip()
+    print(statement.strip()[4:].strip())
+    return
 
 def check_exec(command):
     paths = os.environ.get("PATH").split(":")
@@ -13,59 +14,55 @@ def check_exec(command):
         file_path = f"{dir}/{file_name}"
         if os.path.exists(file_path):
             if os.access(file_path, os.X_OK):
-                return True
-    return False
+                return (True, file_path)
+    return (False, None)
+
+def run_exec(statement):
+    command = statement.strip()[4:].strip()
+    executable, _ = check_exec(command)
+    if executable:
+        result = subprocess.run(statement.split(" "),capture_output=True,text=True)
+        return result
+        
+    return None
 
 
 def type_command(statement):
     command = statement.strip()[4:].strip()
     if command in ["type", "echo", "exit", "pwd"]:
-        return f"{command} is a shell builtin"
-    
-    paths = os.environ.get("PATH").split(":")
-    file_name = command
-    for dir in paths:
-        file_path = f"{dir}/{file_name}"
-        if os.path.exists(file_path):
-            if os.access(file_path, os.X_OK):
-                return f"{file_name} is {file_path}"
+        print(f"{command} is a shell builtin")
+        return
 
-    return f"{file_name}: not found"
-    
+    executable, file_path = check_exec(command)
+    if executable:
+        print(f"{command} is {file_path}")
+        return
+    print(f"{command}: not found")
+    return
+
+def pwd(statement):
+    print(os.getcwd())
+    return
+        
+
 def main():
-
-    # TODO: Uncomment the code below to pass the first stage
+    functions = {"echo":echo, "type": type_command, "exec": check_exec, "pwd": pwd}
     while True:
         sys.stdout.write("$ ")
         statement = input()
         splitted_statment = statement.split(" ")
         command = splitted_statment[0]
-        if not command:
-            continue
         if command == "exit":
             break
-        if command == "echo":
-            print(echo(statement))
+        if not command:
             continue
-        
-        if command == "type":
-            result = type_command(statement)
-            if not result:
-                continue
-            print(result)
+        if command in functions:
+            functions[command](statement)
             continue
-        
-        exec = check_exec(command)
-        if exec:
-            result = subprocess.run(splitted_statment,capture_output=True,text=True)
+        result = run_exec(statement)
+        if result:
             print(result.stdout,end='')
             continue
-
-        if command == "pwd":
-            print(os.getcwd())
-            continue
-        
-        
         print(f"{command}: command not found")
     
     
