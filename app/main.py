@@ -57,14 +57,15 @@ def main():
         
         exec = check_exec(command)
         if exec:
-            subprocess.run(" ".join(splitted_statment[1:]))
+            subprocess.run(" ".join(splitted_statment))
+            continue
         
 
            
             
             
-        else:
-            print(f"{command}: command not found")
+        
+        print(f"{command}: command not found")
     
     
 
