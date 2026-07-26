@@ -63,7 +63,7 @@ def main():
             functions[command](statement)
             continue
         result = run_exec(statement)
-        print(result)
+      
         if result:
             print(result.stdout,end='')
             continue
