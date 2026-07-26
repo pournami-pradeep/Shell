@@ -18,9 +18,12 @@ def check_exec(command):
     return (False, None)
 
 def run_exec(statement):
-    command = statement.strip()[4:].strip()
+    splitted_statment = statement.split(" ")
+    command = splitted_statment[0]
     executable, _ = check_exec(command)
+    print("statement",statement, executable)
     if executable:
+        
         result = subprocess.run(statement.split(" "),capture_output=True,text=True)
         return result
         
