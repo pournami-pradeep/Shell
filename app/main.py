@@ -59,13 +59,8 @@ def main():
         if exec:
             result = subprocess.run(splitted_statment,capture_output=True,text=True)
             print(result.stdout)
-
             continue
         
-
-           
-            
-            
         
         print(f"{command}: command not found")
     
