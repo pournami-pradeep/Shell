@@ -21,7 +21,7 @@ def run_exec(statement):
     splitted_statment = statement.split(" ")
     command = splitted_statment[0]
     executable, _ = check_exec(command)
-    print("statement",statement, executable)
+    
     if executable:
         
         result = subprocess.run(statement.split(" "),capture_output=True,text=True)
