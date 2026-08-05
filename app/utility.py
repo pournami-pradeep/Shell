@@ -59,8 +59,10 @@ def cd(statement):
     else:
         splitted_path = full_path.split("/")
         for path in splitted_path:
-            if not path or path == ".":
+            if not path:
                 continue
+            elif path == ".":
+                new_path += "."
             elif path == "..":
                 cwd = os.getcwd()
                 parent = os.path.dirname(cwd)
