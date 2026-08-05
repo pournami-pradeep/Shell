@@ -3,7 +3,7 @@ import os
 import sys
 
 import subprocess
-
+HOME = os.environ.get('HOME')
 
 def exit(statement):
     sys.exit()
@@ -54,12 +54,14 @@ def cd(statement):
     path = statement.strip()[2:].strip()
     splitted_path = path.split("/")
     for path in splitted_path:
-        if path == ".":
+        if not path or path == ".":
             continue
         elif path == "..":
             cwd = os.getcwd()
             parent = os.path.dirname(cwd)
             os.chdir(parent)
+        elif path == "~":
+            os.chdir(HOME)
         else:
             if os.path.exists(path):
                 os.chdir(path)
