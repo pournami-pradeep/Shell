@@ -66,7 +66,7 @@ def cd(statement):
             elif path == "..":
                 cwd = os.getcwd()
                 parent = os.path.dirname(cwd)
-                new_path += f"/{parent}"
+                new_path = parent + new_path
             elif path == "~":
                 new_path = HOME
             else:
