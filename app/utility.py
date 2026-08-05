@@ -71,7 +71,7 @@ def cd(statement):
                 new_path += path
                 
     if os.path.exists(new_path):
-        os.chdir(full_path)
+        os.chdir(new_path)
     else:
         print(f"cd: {full_path}: No such file or directory")
     return 
