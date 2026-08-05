@@ -69,7 +69,6 @@ def cd(statement):
         elif path == "~":
             os.chdir(HOME)
         else:
-            print(path,"-----")
             if os.path.exists(path):
                 os.chdir(path)
             else:
