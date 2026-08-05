@@ -50,8 +50,14 @@ def pwd(statement):
     print(os.getcwd())
     return
 
+
 def cd(statement):
     full_path = statement.strip()[2:].strip()
+    if full_path.startswith("/"):
+        if os.path.exists(full_path):
+            os.chdir(full_path)
+            return 
+
     splitted_path = full_path.split("/")
     for path in splitted_path:
         if not path or path == ".":
