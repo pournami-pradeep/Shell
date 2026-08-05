@@ -52,7 +52,17 @@ def pwd(statement):
 
 def cd(statement):
     path = statement.strip()[2:].strip()
-    if os.path.exists(path):
-        os.chdir(path)
-        return
-    print(f"cd: {path}: No such file or directory")
+    splitted_path = path.split("/")
+    for path in splitted_path:
+        if path == ".":
+            continue
+        elif path == "..":
+            cwd = os.getcwd()
+            parent = os.path.dirname(cwd)
+            os.chdir(parent)
+        else:
+            if os.path.exists(path):
+                os.chdir(path)
+            else:
+                print(f"cd: {path}: No such file or directory")        
+    return
