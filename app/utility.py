@@ -60,27 +60,26 @@ def cd(statement):
         else:
             print(f"cd: {full_path}: No such file or directory")
         return
-    else:
-        splitted_path = full_path.split("/")
-        for path in splitted_path:
-            if not path:
-                continue
-            elif path == ".":
-                new_path += "."
-            elif path == "..":
-                cwd = os.getcwd()
-                parent = os.path.dirname(cwd)
-                new_path += parent 
+   
+    splitted_path = full_path.split("/")
+    for path in splitted_path:
+        if not path or path == ".":
+            continue
+      
+        elif path == "..":
+            cwd = os.getcwd()
+            parent = os.path.dirname(cwd)
+            new_path += parent 
 
-            elif path == "~":
-                new_path = HOME
-            else:
-                new_path += f"/{path}"
-                
-            if os.path.exists(new_path):
-                os.chdir(new_path)
-            else:
-                print(f"cd: {full_path}: No such file or directory")
-                break
+        elif path == "~":
+            new_path = HOME
+        else:
+            new_path += f"/{path}"
+            
+        if os.path.exists(new_path):
+            os.chdir(new_path)
+        else:
+            print(f"cd: {full_path}: No such file or directory")
+            break
     return 
   
