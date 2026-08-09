@@ -83,9 +83,7 @@ def cd(statement):
             go_to(HOME)
             
         else:
-            if new_path:
-                new_path += "/"
-            new_path += f"{path}"
+            new_path += f"{path}/"
             # print(new_path)
             
     if new_path:
