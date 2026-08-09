@@ -74,7 +74,7 @@ def cd(statement):
         elif path == "~":
             new_path = HOME
         else:
-            new_path += f"/{path}"
+            new_path += f"{path}"
             
         if os.path.exists(new_path):
             os.chdir(new_path)
