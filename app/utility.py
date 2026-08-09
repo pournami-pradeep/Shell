@@ -58,11 +58,9 @@ def go_to(path):
         return True
     return False
 
-def cd(statement):
-    
+def cd(statement): 
     new_path = ""
     full_path = statement.strip()[2:].strip()
-    paths = {"/": full_path, "..": os.path.dirname(os.getcwd()), "~": HOME, ".": ""}
     if full_path.startswith("/"):
         res = go_to(full_path)
         if not res:
@@ -73,16 +71,20 @@ def cd(statement):
     for path in splitted_path:
         if not path or path == ".":
             continue
-        elif path in paths:
-            go_to(paths[path])
+      
+        elif path == "..":
+            cwd = os.getcwd()
+            parent = os.path.dirname(cwd)
+            go_to(parent)
+
+        elif path == "~":
+            go_to(HOME)   
         else:
-            new_path += f"{path}/"
-            # print(new_path)
-            
-    if new_path:
-        res = (go_to(new_path))
-        if not res:
-            print(f"cd: {full_path}: No such file or directory")
+            new_path += f"{path}/"            
+  
+    res = (go_to(new_path))
+    if not res:
+        print(f"cd: {full_path}: No such file or directory")
         
     return 
   
