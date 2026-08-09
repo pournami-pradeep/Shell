@@ -73,15 +73,8 @@ def cd(statement):
     for path in splitted_path:
         if not path or path == ".":
             continue
-      
-        elif path == "..":
-            cwd = os.getcwd()
-            parent = os.path.dirname(cwd)
-            go_to(parent)
-
-        elif path == "~":
-            go_to(HOME)
-            
+        elif path in paths:
+            go_to(paths[path])
         else:
             new_path += f"{path}/"
             # print(new_path)
