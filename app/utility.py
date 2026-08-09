@@ -55,8 +55,8 @@ def go_to(path):
         return ""
     if os.path.exists(path):
         os.chdir(path)
-        return ""
-    return (f"cd: {path}: No such file or directory")
+    else:
+        return (f"cd: {path}: No such file or directory")
 
 def cd(statement):
     
