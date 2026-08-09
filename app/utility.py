@@ -64,7 +64,7 @@ def cd(statement):
     full_path = statement.strip()[2:].strip()
     paths = {"/": full_path, "..": os.path.dirname(os.getcwd()), "~": HOME, ".": ""}
     if full_path.startswith("/"):
-        go_to(full_path)
+        print(go_to(full_path))
         return
    
     splitted_path = full_path.split("/")
@@ -87,7 +87,7 @@ def cd(statement):
             # print(new_path)
             
     if new_path:
-        go_to(new_path)
+        print(go_to(new_path))
         
     return 
   
