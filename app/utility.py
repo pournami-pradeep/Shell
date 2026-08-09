@@ -67,6 +67,7 @@ def cd(statement):
         res = go_to(full_path)
         if not res:
             print(f"cd: {full_path}: No such file or directory")
+        return
    
     splitted_path = full_path.split("/")
     for path in splitted_path:
