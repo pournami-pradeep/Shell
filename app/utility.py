@@ -52,11 +52,11 @@ def pwd(statement):
 
 def go_to(path):
     if not path:
-        return ""
+        return True
     if os.path.exists(path):
         os.chdir(path)
-    else:
-        return (f"cd: {path}: No such file or directory")
+        return True
+    return False
 
 def cd(statement):
     
@@ -64,8 +64,8 @@ def cd(statement):
     full_path = statement.strip()[2:].strip()
     paths = {"/": full_path, "..": os.path.dirname(os.getcwd()), "~": HOME, ".": ""}
     if full_path.startswith("/"):
-        print(go_to(full_path))
-        return
+        if not go_to(full_path):
+            print(f"cd: {full_path}: No such file or directory")
    
     splitted_path = full_path.split("/")
     for path in splitted_path:
@@ -87,7 +87,8 @@ def cd(statement):
             # print(new_path)
             
     if new_path:
-        print(go_to(new_path))
+        if not (go_to(new_path)):
+            print(f"cd: {full_path}: No such file or directory")
         
     return 
   
