@@ -78,7 +78,7 @@ def cd(statement):
             if new_path:
                 new_path += "/"
             new_path += f"{path}"
-            print(new_path)
+            # print(new_path)
             
     if os.path.exists(new_path):
         os.chdir(new_path)
