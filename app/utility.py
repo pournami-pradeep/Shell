@@ -73,13 +73,17 @@ def cd(statement):
 
         elif path == "~":
             new_path = HOME
-        else:
-            new_path += f"{path}"
             
-        if os.path.exists(new_path):
-            os.chdir(new_path)
         else:
-            print(f"cd: {full_path}: No such file or directory")
-            break
+            if new_path:
+                new_path += "/"
+            new_path += f"{path}"
+            print(new_path)
+            
+    if os.path.exists(new_path):
+        os.chdir(new_path)
+    else:
+        print(f"cd: {full_path}: No such file or directory")
+        
     return 
   
