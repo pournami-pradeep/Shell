@@ -101,19 +101,8 @@ def cat_file(command):
     for word in command:
         if word.strip():
             final_list.append(str(word).strip())
-
-    # files = command.strip()[3:].strip()
-    # file_list = files.split(".")
-    # print(file_list)
-    # final_list = []
-    # for i in range(len(file_list)):
-    #     file_name = file_list[i]+file_list[i+1]
-    #     i += 2
-    #     final_list.append(file_name)
-    # print(final_list)
-   
-    # print(final_list)
     result = subprocess.run(final_list, check=True)
     if result.returncode == 0:
-        print(result.stdout)
+        print(result.stdout, end='')
+    return
 
