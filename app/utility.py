@@ -96,7 +96,12 @@ def cd(statement):
 
 
 def cat_file(command):
-    command = command.replace("'","")
+    command = command.split("'")
+    final_list = []
+    for word in command:
+        if word.strip():
+            final_list.append(str(word).strip())
+
     # files = command.strip()[3:].strip()
     # file_list = files.split(".")
     # print(file_list)
@@ -106,9 +111,8 @@ def cat_file(command):
     #     i += 2
     #     final_list.append(file_name)
     # print(final_list)
-    final_list = command.split(" ")
-    final_list = [x for x in final_list if x]
-    # print(final_list)
+   
+    print(final_list)
     result = subprocess.run(final_list, check=True)
     if result.returncode == 0:
         print(result.stdout)
