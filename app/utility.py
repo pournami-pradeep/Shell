@@ -112,7 +112,7 @@ def cat_file(command):
     #     final_list.append(file_name)
     # print(final_list)
    
-    print(final_list)
+    # print(final_list)
     result = subprocess.run(final_list, check=True)
     if result.returncode == 0:
         print(result.stdout)
