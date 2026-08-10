@@ -101,7 +101,7 @@ def cat_file(command):
     for word in command:
         if word.strip():
             final_list.append(str(word).strip())
-    result = subprocess.run(final_list, check=True)
+    result = subprocess.run(final_list, check=True, capture_output=True, text=True)
     if result.returncode == 0:
         print(result.stdout, end='')
     return
