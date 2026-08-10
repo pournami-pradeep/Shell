@@ -9,7 +9,8 @@ def exit(statement):
     sys.exit()
 
 def echo(statement):
-    print(statement.strip()[4:].strip())
+    res = statement.strip()[4:].strip().replace("'", "")
+    print(res)
     return
 
 def check_exec(command):
