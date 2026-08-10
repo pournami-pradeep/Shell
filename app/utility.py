@@ -9,8 +9,12 @@ def exit(statement):
     sys.exit()
 
 def echo(statement):
-    res = statement.strip()[4:].strip().replace("'", "")
-    print(res)
+    res = statement.strip()[4:].strip()
+    if not "'" in res and not '"' in res:
+        res = " ".join(res.split())
+
+  
+    print(res.replace("'","").replace('"',''))
     return
 
 def check_exec(command):
@@ -89,3 +93,23 @@ def cd(statement):
         
     return 
   
+
+
+def cat_file(command):
+    command = command.replace("'","")
+    # files = command.strip()[3:].strip()
+    # file_list = files.split(".")
+    # print(file_list)
+    # final_list = []
+    # for i in range(len(file_list)):
+    #     file_name = file_list[i]+file_list[i+1]
+    #     i += 2
+    #     final_list.append(file_name)
+    # print(final_list)
+    final_list = command.split(" ")
+    final_list = [x for x in final_list if x]
+    print(final_list)
+    result = subprocess.run(final_list, check=True)
+    if result.returncode == 0:
+        print(result.stdout)
+

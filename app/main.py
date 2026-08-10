@@ -1,7 +1,7 @@
 import sys
-from .utility import echo, type_command, pwd, run_exec, exit, cd
+from .utility import echo, type_command, pwd, run_exec, exit, cd, cat_file
         
-functions = {"echo":echo, "type": type_command, "pwd": pwd, "exit": exit, "cd": cd}
+functions = {"echo":echo, "type": type_command, "pwd": pwd, "exit": exit, "cd": cd, "cat": cat_file}
 def main():
     
     while True:
