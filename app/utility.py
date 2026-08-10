@@ -108,7 +108,7 @@ def cat_file(command):
     # print(final_list)
     final_list = command.split(" ")
     final_list = [x for x in final_list if x]
-    print(final_list)
+    # print(final_list)
     result = subprocess.run(final_list, check=True)
     if result.returncode == 0:
         print(result.stdout)
