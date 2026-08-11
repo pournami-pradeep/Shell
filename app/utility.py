@@ -15,7 +15,7 @@ def echo(statement):
         splitted = res.split("'")
         res = ''.join([x for x in splitted if x])
     elif res.startswith('"'):
-        splitted = res.split('"')
+        splitted = res.split('" ')
         # print(splitted)
         res = ''.join([x for x in splitted if x])
     else:
