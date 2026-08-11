@@ -15,7 +15,7 @@ def echo(statement):
         res = ''
         for x in splitted:
             if x.strip():
-                res += x
+                res += x.strip()
             elif not x:
                 continue
             else:
@@ -25,7 +25,7 @@ def echo(statement):
         res = ''
         for x in splitted:
             if x.strip():
-                res += x
+                res += x.strip()
             elif not x:
                 continue
             else:
