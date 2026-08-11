@@ -11,13 +11,14 @@ def exit(statement):
 def echo(statement):
     res = statement.strip()[4:].strip()
     if res.startswith("'"):
-        res = res.replace("'","")
+        res = res.replace("'"," ")
     elif res.startswith('"'):
-        res = res.replace('"',"")
+        res = res.replace('"'," ")
     else:
         res = " ".join(res.split())
     print(res)
     return
+
 
 def check_exec(command):
     paths = os.environ.get("PATH").split(":")
