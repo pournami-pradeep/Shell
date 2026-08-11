@@ -16,7 +16,7 @@ def echo(statement):
         res = res.replace('"'," ")
     else:
         res = " ".join(res.split())
-    print(res)
+    print(res.strip())
     return
 
 
