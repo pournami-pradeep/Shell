@@ -8,6 +8,24 @@ HOME = os.environ.get('HOME')
 def exit(statement):
     sys.exit()
 
+def echo_v2(statement):
+    state = ""
+    res = ""
+    for letter in statement:
+        if letter in ["'", '"'] and not state:
+            state = letter
+            continue
+        if state and letter == state:
+            state = ""
+            continue
+        if letter == " " and not state:
+            if res and res[-1] != " ":
+                res += " "
+            continue
+        res += letter
+    print(res)        
+    
+
 
 def echo(statement):
     res = statement.strip()[4:].strip()
