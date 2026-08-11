@@ -10,11 +10,13 @@ def exit(statement):
 
 def echo(statement):
     res = statement.strip()[4:].strip()
-    if not "'" in res and not '"' in res:
+    if res.startswith("'"):
+        res.replace("'","")
+    elif res.startswith('"'):
+        res.replace('"',"")
+    else:
         res = " ".join(res.split())
-
-  
-    print(res.replace("'","").replace('"',''))
+    print(res)
     return
 
 def check_exec(command):
@@ -96,7 +98,14 @@ def cd(statement):
 
 
 def cat_file(command):
-    command = command.split("'")
+    files_str = command.strip()[3:].strip()
+    if files_str.startswith("'"):
+        files = files_str.split("'")
+    elif files_str.startswith('"'):
+        files = files_str.split('"')
+    else:
+        files = files_str.split(" ")
+    files.insert(0,'cat')
     final_list = []
     for word in command:
         if word.strip():
