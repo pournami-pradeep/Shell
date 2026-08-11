@@ -9,6 +9,7 @@ def exit(statement):
     sys.exit()
 
 def echo_v2(statement):
+    statement = statement.strip()[4:].strip()
     state = ""
     res = ""
     for letter in statement:
