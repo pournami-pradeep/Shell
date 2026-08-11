@@ -11,9 +11,9 @@ def exit(statement):
 def echo(statement):
     res = statement.strip()[4:].strip()
     if res.startswith("'"):
-        res.replace("'","")
+        res = res.replace("'","")
     elif res.startswith('"'):
-        res.replace('"',"")
+        res = res.replace('"',"")
     else:
         res = " ".join(res.split())
     print(res)
@@ -107,7 +107,7 @@ def cat_file(command):
         files = files_str.split(" ")
     files.insert(0,'cat')
     final_list = []
-    for word in command:
+    for word in files:
         if word.strip():
             final_list.append(str(word).strip())
     result = subprocess.run(final_list, check=True, capture_output=True, text=True)
