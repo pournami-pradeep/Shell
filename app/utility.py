@@ -8,6 +8,7 @@ HOME = os.environ.get('HOME')
 def exit(statement):
     sys.exit()
 
+
 def echo(statement):
     res = statement.strip()[4:].strip()
     if res.startswith("'"):
@@ -15,7 +16,7 @@ def echo(statement):
         res = ''
         for x in splitted:
             if x.strip():
-                res += x.strip()
+                res += x
             elif not x:
                 continue
             else:
@@ -25,7 +26,7 @@ def echo(statement):
         res = ''
         for x in splitted:
             if x.strip():
-                res += x.strip()
+                res += x
             elif not x:
                 continue
             else:
