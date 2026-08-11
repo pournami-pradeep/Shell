@@ -10,12 +10,15 @@ def exit(statement):
 
 def echo(statement):
     res = statement.strip()[4:].strip()
+    
     if res.startswith("'"):
-        res = res.replace("'"," ")
+        splitted = res.split("'")
+        res = ' '.join(splitted)
     elif res.startswith('"'):
-        res = res.replace('"'," ")
+        splitted = res.split('"')
+        res = ''.join(splitted)
     else:
-        res = " ".join(res.split())
+        res = "".join(res.split())
     print(res.strip())
     return
 
