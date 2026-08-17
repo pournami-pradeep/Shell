@@ -124,7 +124,7 @@ def cat_file(command):
                 i+=2
             else:
                 res += files_str[i]
-        files = res
+        files_str = res
 
         files = files_str.split(" ")
     print(files)
