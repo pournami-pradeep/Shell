@@ -118,16 +118,18 @@ def cat_file(command):
         files = files_str.split('"')
     else:
         res = ""
-        for i in range(len(files_str)):
+        i = 0
+        while i<(len(files_str)):
             if files_str[i] == "\\":
                 res += files_str[i+1]
                 i+=2
             else:
                 res += files_str[i]
+                i+=1
         files_str = res
 
         files = files_str.split(" ")
-    print(files)
+    # print(files)
     files.insert(0,'cat')
     final_list = []
     for word in files:
