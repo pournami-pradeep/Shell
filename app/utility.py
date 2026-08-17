@@ -127,7 +127,7 @@ def cat_file(command):
         files = res
 
         files = files_str.split(" ")
-    # print(files)
+    print(files)
     files.insert(0,'cat')
     final_list = []
     for word in files:
