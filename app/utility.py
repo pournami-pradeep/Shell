@@ -12,49 +12,25 @@ def echo_v2(statement):
     statement = statement.removeprefix("echo ")
     state = ""
     res = ""
-    for letter in statement:
-        if letter in ["'", '"'] and not state:
+    i = 0
+    while i < len(statement):
+        letter = statement[i]
+        if not state and letter == "\\":
+            res += statement[i+1]
+            i += 2
+            continue
+        elif letter in ["'", '"'] and not state:
             state = letter
-            continue
-        if state and letter == state:
+        elif state and letter == state:
             state = ""
-            continue
-        if letter == " " and not state:
+        elif letter == " " and not state:
             if res and res[-1] != " ":
                 res += " "
-            continue
-        res += letter
+        else:
+            res += letter
+        i += 1
     print(res)        
     
-
-
-def echo(statement):
-    res = statement.strip()[4:].strip()
-    if res.startswith("'"):
-        splitted = res.split("'")
-        res = ''
-        for x in splitted:
-            if x.strip():
-                res += x
-            elif not x:
-                continue
-            else:
-                res += " "
-    elif res.startswith('"'):
-        splitted = res.split('"')
-        res = ''
-        for x in splitted:
-            if x.strip():
-                res += x
-            elif not x:
-                continue
-            else:
-                res += " "
-    else:
-        res = "".join(res.split())
-    print(res.strip())
-    return
-
 
 def check_exec(command):
     paths = os.environ.get("PATH").split(":")
