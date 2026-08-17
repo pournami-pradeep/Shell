@@ -117,7 +117,17 @@ def cat_file(command):
     elif files_str.startswith('"'):
         files = files_str.split('"')
     else:
+        res = ""
+        for i in range(len(files_str)):
+            if files_str[i] == "\\":
+                res += files_str[i+1]
+                i+=2
+            else:
+                res += files_str[i]
+        files = res
+
         files = files_str.split(" ")
+    # print(files)
     files.insert(0,'cat')
     final_list = []
     for word in files:
